@@ -12,6 +12,7 @@ export default function useForm() {
     const [changeDisplay, setChangeDisplay] = useState(false);
     const [nombre, setNombre] = useState('');
     const [pago, setPago] = useState('');
+    const [idCliente, setIdCliente] = useState(0);
 
     const [alert, setAlert] = useState('');
 
@@ -41,6 +42,10 @@ export default function useForm() {
 
     const guardarPago = (e) => {
         setPago(e.target.value);
+    }
+
+    const guardarIdCliente = (e) => {
+        setIdCliente(+(e.target.value));
     }
 
     const handleSubmit = async (e) => {
@@ -73,6 +78,7 @@ export default function useForm() {
             hora: formatTime(Date.now()), 
             nombre,
             pago,
+            idCliente,
         }
 
         const resultado = await Swal.fire({
@@ -138,6 +144,7 @@ export default function useForm() {
     return {
         nombre,
         pago,
+        idCliente,
         cells,
         changeDisplay,
         alert,
@@ -147,6 +154,7 @@ export default function useForm() {
         sigPag,
         guardarNombre,
         guardarPago,
+        guardarIdCliente,
         handleSubmit,
         handleChangeDisplay,
     }
